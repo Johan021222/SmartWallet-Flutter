@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'screens/home_screen.dart';
 
 void main() {
+  // Inicializar databaseFactory para plataformas de escritorio (Windows, Linux, macOS)
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfi;
   runApp(const SmartWalletApp());
 }
 
