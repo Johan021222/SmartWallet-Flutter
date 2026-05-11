@@ -70,6 +70,17 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
       return;
     }
 
+    // Validación: El nombre debe contener al menos una letra (no solo números)
+    final contieneLetra = RegExp(r'[a-zA-ZáéíóúÁÉÍÓÚñÑ]').hasMatch(titulo);
+    if (!contieneLetra) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('El nombre debe contener al menos una letra.'),
+        ),
+      );
+      return;
+    }
+
     // Mostrar indicador de carga
     setState(() {
       _isLoading = true;
